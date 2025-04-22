@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AlgoVisualizer</string>
+    <string name="search_for_an_algorithm">search for an algorithm</string>
+    <string name="choose_an_algorithm">Choose an algorithm</string>
+    <string name="choose_the_frequency_aka_execution_speed">Choose the frequency (aka. execution speed)</string>
+    <string name="choose_size_of_data_from_6_to_15">Choose Size of Data from 6 to 15</string>
+    <string name="start">Start</string>
+    <string name="configuration">Configuration</string>
 </resources>
