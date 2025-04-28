@@ -22,11 +22,14 @@ Algorithm Visualizer is an educational tool designed to help users understand ho
 
 ## Screenshots
 <img src="screenshots/splash_screen.png" alt="Splash Screen" width="540" height="1200">
+### Splash Screen
 <img src="screenshots/config_screen.png" alt="Splash Screen" width="540" height="1200">
+### Configuration Screen
 <img src="screenshots/visu_screen_0.png" alt="Splash Screen" width="540" height="1200">
+### Visualization Screen
 <img src="screenshots/visu_screen_1.png" alt="Splash Screen" width="540" height="1200">
+### Visualization Screen after finishing
 
-*[Screenshots will be added here]*
 
 ## Tech Stack
 
