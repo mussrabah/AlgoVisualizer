@@ -21,7 +21,7 @@ Algorithm Visualizer is an educational tool designed to help users understand ho
 - Modern Android architecture following MVVM pattern
 
 ## Screenshots
-<img src="screenshots/splash_screen.png" alt="Splash Screen" width="300" height="300">
+<img src="screenshots/splash_screen.png" alt="Splash Screen" width="1080" height="2400">
 
 ![App Screenshot](screenshots/splash_screen.png)
 ![App Screenshot](screenshots/config_screen.png)
