@@ -18,7 +18,9 @@ class ConfigurationViewModel(
 
     private val _state = MutableStateFlow(ConfigurationState())
     val state = _state
-        .onStart { loadSortingAlgorithms() }
+        .onStart {
+            loadSortingAlgorithms()
+        }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5000L),

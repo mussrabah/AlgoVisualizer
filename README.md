@@ -21,7 +21,10 @@ Algorithm Visualizer is an educational tool designed to help users understand ho
 - Modern Android architecture following MVVM pattern
 
 ## Screenshots
-
+(screenshots/splash_screen.png)
+(screenshots/config_screen.png)
+(screenshots/visu_screen_0.png)
+(screenshots/visu_screen_1.png)
 *[Screenshots will be added here]*
 
 ## Tech Stack

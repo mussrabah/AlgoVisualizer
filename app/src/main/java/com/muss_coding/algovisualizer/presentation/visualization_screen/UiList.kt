@@ -1,4 +1,5 @@
 package com.muss_coding.algovisualizer.presentation.visualization_screen
 
-sealed interface VisualizationEvent {
-}
+data class UiList(
+    val value: Int
+)

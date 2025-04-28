@@ -6,4 +6,5 @@
     <string name="choose_size_of_data_from_6_to_15">Choose Size of Data from 6 to 15</string>
     <string name="start">Start</string>
     <string name="configuration">Configuration</string>
+    <string name="visualization">Visualization</string>
 </resources>

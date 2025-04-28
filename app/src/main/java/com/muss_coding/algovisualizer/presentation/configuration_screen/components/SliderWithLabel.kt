@@ -1,5 +1,6 @@
 package com.muss_coding.algovisualizer.presentation.configuration_screen.components
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
@@ -9,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -16,7 +18,9 @@ fun SliderWithLabel(
     modifier: Modifier = Modifier,
     text: String,
     sliderValue: Int = 0,
-    onSliderValueChanged: (Int) -> Unit
+    onSliderValueChanged: (Int) -> Unit,
+    valueRange: ClosedFloatingPointRange<Float> = 0f..100f,
+    steps: Int = 9
 ) {
 
     Column(
@@ -40,8 +44,8 @@ fun SliderWithLabel(
                 activeTrackColor = MaterialTheme.colorScheme.secondary,
                 inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer,
             ),
-            steps = 8,
-            valueRange = 0f..100f
+            steps = steps,
+            valueRange = valueRange
         )
     }
 }
