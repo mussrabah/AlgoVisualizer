@@ -7,4 +7,5 @@
     <string name="start">Start</string>
     <string name="configuration">Configuration</string>
     <string name="visualization">Visualization</string>
+    <string name="clear_text">Clear text</string>
 </resources>

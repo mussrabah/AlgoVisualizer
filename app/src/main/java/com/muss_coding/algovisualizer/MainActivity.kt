@@ -40,9 +40,13 @@ import androidx.navigation.toRoute
 import com.muss_coding.algovisualizer.presentation.configuration_screen.ConfigurationEvent
 import com.muss_coding.algovisualizer.presentation.configuration_screen.ConfigurationScreen
 import com.muss_coding.algovisualizer.presentation.configuration_screen.ConfigurationViewModel
+import com.muss_coding.algovisualizer.presentation.util.ObserveAsEvents
 import com.muss_coding.algovisualizer.presentation.visualization_screen.VisualizationAction
+import com.muss_coding.algovisualizer.presentation.visualization_screen.VisualizationEvent
 import com.muss_coding.algovisualizer.presentation.visualization_screen.VisualizationScreen
 import com.muss_coding.algovisualizer.presentation.visualization_screen.VisualizationViewModel
+import com.muss_coding.algovisualizer.presentation.util.renderComposableToBitmap
+import com.muss_coding.algovisualizer.presentation.util.renderComposableToBitmapSafely
 import com.muss_coding.algovisualizer.route.Configuration
 import com.muss_coding.algovisualizer.route.Visualization
 import com.muss_coding.algovisualizer.ui.theme.AlgoVisualizerTheme
@@ -183,6 +187,35 @@ class MainActivity : ComponentActivity() {
                                         viewModel.onAction(action)
                                     }
                                 )
+
+                                //get device width
+                                val deviceWidth = resources.displayMetrics.widthPixels
+
+                                ObserveAsEvents(events = viewModel.events) { event ->
+                                    when(event) {
+                                        is VisualizationEvent.OnCaptureBitmap -> {
+                                            coroutineScope.launch { 
+//                                                val bitmap = renderComposableToBitmap(
+//                                                    context = this@MainActivity,
+//                                                    state = state.value,
+//                                                    width = deviceWidth.toInt(),
+//                                                    height = 200
+//                                                )
+//
+//                                                viewModel.onAction(VisualizationAction.OnSaveBitmap(bitmap))
+                                                renderComposableToBitmapSafely(
+                                                    activity = this@MainActivity,
+                                                    sortStep = event.sortStep,
+                                                    widthPx = deviceWidth,
+                                                    heightPx = 200 * resources.displayMetrics.density.toInt(),
+                                                    onBitmapReady = { bitmap ->
+                                                        viewModel.onAction(VisualizationAction.OnSaveBitmap(bitmap))
+                                                    }
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

@@ -20,15 +20,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.muss_coding.algovisualizer.R
-import com.muss_coding.algovisualizer.presentation.configuration_screen.ConfigurationUI
 import com.muss_coding.algovisualizer.presentation.configuration_screen.components.SliderWithLabel
 import com.muss_coding.algovisualizer.presentation.visualization_screen.components.SortingVisualizer
+import java.io.File
 
 @Composable
 fun VisualizationScreen(
@@ -36,6 +37,8 @@ fun VisualizationScreen(
     state: VisualizationState,
     onAction: (VisualizationAction) -> Unit
 ) {
+
+    val context = LocalContext.current
     Scaffold(
         bottomBar = {
             BottomAppBar(
@@ -46,8 +49,11 @@ fun VisualizationScreen(
                         }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.PlayArrow,
-                            contentDescription = "Add"
+                            imageVector = if (state.play) Icons.Default.PlayArrow
+                                            else ImageVector.vectorResource(
+                                                    id = R.drawable.outline_pause_24
+                                            ),
+                            contentDescription = "Play/Pause"
                         )
                     }
                 },
@@ -66,7 +72,8 @@ fun VisualizationScreen(
 
                     OutlinedIconButton (
                         onClick = {
-                            onAction(VisualizationAction.OnGifClicked)
+                            val outputFile = File(context.cacheDir, "barsort.gif")
+                            onAction(VisualizationAction.OnGifClicked(file = outputFile, context = context))
                         }
                     ) {
                         Icon(
@@ -132,7 +139,7 @@ fun VisualizationScreen(
                 )
 
                 Text(
-                    text = "${state.progress.toString().format(".2f")} %",
+                    text = "${state.progress} %",
                     fontWeight = FontWeight.Bold,
                     fontSize = 32.sp
                 )

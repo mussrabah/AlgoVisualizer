@@ -46,7 +46,12 @@ fun ChooseAnAlgorithmDropDownMenu(
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = chooseAnAlgorithmTextFieldValue,
-            onValueChange = { onQueryChanged(it) },
+            onValueChange = { newValue ->
+                if (newValue.isNotEmpty()) {
+                    onExpandedChanged()
+                }
+                onQueryChanged(newValue)
+                            },
             label = { Text(stringResource(R.string.choose_an_algorithm)) },
             leadingIcon = {
                 Icon(
@@ -56,14 +61,16 @@ fun ChooseAnAlgorithmDropDownMenu(
             },
             trailingIcon = {
                 Row {
-                    Icon(
-                        imageVector = Icons.Sharp.Clear,
-                        contentDescription = "Clear text",
-                        modifier = Modifier
-                            .clickable {
-                            onQueryChanged("")
-                        }
-                    )
+                    if (chooseAnAlgorithmTextFieldValue.isNotEmpty()) {
+                        Icon(
+                            imageVector = Icons.Sharp.Clear,
+                            contentDescription = stringResource(R.string.clear_text),
+                            modifier = Modifier
+                                .clickable {
+                                    onQueryChanged("")
+                                }
+                        )
+                    }
                     ExposedDropdownMenuDefaults
                         .TrailingIcon(expanded, modifier = Modifier.clickable { onExpandedChanged() })
                 }
@@ -93,7 +100,9 @@ fun ChooseAnAlgorithmDropDownMenu(
                 }
                 if (filteringOptions.isNotEmpty()) {
                     LazyColumn(
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
                     ) {
 
                         items(filteringOptions) { selectionOption ->

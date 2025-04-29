@@ -5,5 +5,5 @@ data class ConfigurationState(
     val selectedAlgorithm: String = "",
     val frequency: Int = 50,
     val dataSize: Int = 0,
-    val expanded: Boolean = false
+    val expanded: Boolean = false,
 )
